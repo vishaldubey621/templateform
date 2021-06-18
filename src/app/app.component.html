@@ -1,0 +1,43 @@
+
+              <h3> Template-Driven Form Validation</h3><br>
+              
+                  
+                    <form #form="ngForm" (ngSubmit)="Submitdata(form)">
+
+                       <label for="firstName">First Name</label>
+                      <input type="text" class="form-control" name="firstName" [(ngModel)]="firstName" required><br>
+
+                      
+                        <div *ngIf="firstName.errors.required">First Name is required</div>
+                    
+                   <label for="Age">Age</label>
+                    <input type="text" class="form-control" name="age" [(ngModel)]="age" required minlength="2" />
+                    <div *ngIf="age.invalid && (age.dirty || age.touched)"></div>
+
+                   <div *ngIf="age.errors?.required">age is required. </div>
+                      <div *ngIf="age.errors?.minlength">
+                        Name must be at least 4 characters long.</div>
+  
+                        
+              
+                     <label for="address">Address</label>
+                  <input type="text" class="form-control" name="add" [(ngModel)]="add" required/><br>
+                  <span *ngIf="add['touched'] && !add['valid']">
+                    <div *ngIf="add.error.required">Email is required</div>
+                    </span>
+                  
+                  
+                 <label for="phone">Phone number</label>
+              <input type="text" class="form-control" name="phone" [(ngModel)]="phone" maxlength="10" minlength="2" /><br>
+             <span *ngIf="phone.error.minlength">phone must be at least 2 digit</span>
+            
+            <span  *ngIf="phone.error.maxlength">phone must be maximum 10 digit</span>
+ 
+                <button type="submit" class="btn btn-primary">Register</button>
+                 
+     </form>
+        
+      
+ 
+
+
